@@ -67,8 +67,8 @@ chown ftpuser:ftpusers /var/log/lighttpd/error.log
 mv /etc/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf.$$
 wget -O /etc/lighttpd/lighttpd.conf https://raw.githubusercontent.com/theonemule/azure-blog-storage-ftp-server/master/lighttpd.conf
 
-echo "TLS     2
-TLSCipherSuite	HIGH
+echo "TLS     1
+TLSCipherSuite	ALL
 CertFile	/ftp/ftp.pem
 PureDB	/ftp/ftp.pdb" >> /etc/pure-ftpd/pure-ftpd.conf
 
