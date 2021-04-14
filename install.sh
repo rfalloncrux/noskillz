@@ -48,7 +48,6 @@ echo "#!/bin/sh -e
 if [ ! -d  /mnt/blobfusetmp ]; then
   mkdir /mnt/blobfusetmp
 fi
-
 blobfuse /ftp/ftp-files --tmp-path=/mnt/blobfusetmp -o uid=$FTPUID -o gid=$FTPGID -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 --config-file=/ftp/ftp.cfg -o allow_other --log-level=LOG_DEBUG --file-cache-timeout-in-seconds=120
 /usr/sbin/pure-ftpd /etc/pure-ftpd/pure-ftpd.conf" > /etc/rc.local
 chmod +x /etc/rc.local
@@ -65,10 +64,10 @@ chown ftpuser:ftpusers /var/log/lighttpd/error.log
 
 #Configure the web server with the lighttpd.conf from GitHub
 mv /etc/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf.$$
-wget -O /etc/lighttpd/lighttpd.conf https://github.com/rfalloncrux/noskillz/blob/main/lighttpd.conf
+wget -O /etc/lighttpd/lighttpd.conf https://raw.githubusercontent.com/theonemule/azure-blog-storage-ftp-server/master/lighttpd.conf
 
-echo "TLS     1
-TLSCipherSuite	ALL
+echo "TLS     2
+TLSCipherSuite	HIGH
 CertFile	/ftp/ftp.pem
 PureDB	/ftp/ftp.pdb" >> /etc/pure-ftpd/pure-ftpd.conf
 
@@ -77,7 +76,7 @@ find /ftp -type d -exec chmod 2750 {} \+
 find /ftp -type f -exec chmod 640 {} \+
 
 rm /var/www/html/*
-wget -O /var/www/html/index.sh https://github.com/rfalloncrux/noskillz/blob/main/index.sh
+wget -O /var/www/html/index.sh https://raw.githubusercontent.com/theonemule/azure-blog-storage-ftp-server/master/index.sh
 chown -R ftpuser:ftpusers /var/www/html/
 find /var/www/html/ -type d -exec chmod 2750 {} \+
 find /var/www/html/ -type f -exec chmod 640 {} \+
