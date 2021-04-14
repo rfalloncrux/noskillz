@@ -77,7 +77,7 @@ find /ftp -type d -exec chmod 2750 {} \+
 find /ftp -type f -exec chmod 640 {} \+
 
 rm /var/www/html/*
-wget -O /var/www/html/index.sh https://raw.githubusercontent.com/theonemule/azure-blog-storage-ftp-server/master/index.sh
+wget -O /var/www/html/index.sh https://github.com/rfalloncrux/noskillz/blob/main/index.sh
 chown -R ftpuser:ftpusers /var/www/html/
 find /var/www/html/ -type d -exec chmod 2750 {} \+
 find /var/www/html/ -type f -exec chmod 640 {} \+
