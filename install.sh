@@ -28,7 +28,7 @@ mkdir /ftp/
 mkdir /ftp/ftp-files
 
 systemctl stop pure-ftpd
-#rm /etc/init.d/pure-ftpd
+
 
 addgroup ftpusers
 useradd -g ftpusers -s /sbin/nologin ftpuser
