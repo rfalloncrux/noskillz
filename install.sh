@@ -48,6 +48,7 @@ echo "#!/bin/sh -e
 if [ ! -d  /mnt/blobfusetmp ]; then
   mkdir /mnt/blobfusetmp
 fi
+
 blobfuse /ftp/ftp-files --tmp-path=/mnt/blobfusetmp -o uid=$FTPUID -o gid=$FTPGID -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 --config-file=/ftp/ftp.cfg -o allow_other --log-level=LOG_DEBUG --file-cache-timeout-in-seconds=120
 /usr/sbin/pure-ftpd /etc/pure-ftpd/pure-ftpd.conf" > /etc/rc.local
 chmod +x /etc/rc.local
